@@ -36,6 +36,7 @@ Abstraction:-
  The CNR number is extracted from it.
 Separation:-
 •The CNR number is separated according to this pattern:
+  
 
 2.Petitioner and Respondent 
 FILE: final_pet1.py
@@ -51,9 +52,8 @@ b. Address separation
    • Keywords are found by looking at the output of the word frequency file.
      These keywords are observed in the address file to look for patterns.
    • Keywords(“village”, “vill”, “distt” etc.)  are searched in the address fields.
-   • The word after the keyword or before the keyword(two separate functions exist for this purpose) is
-     used as the field found depending upon the two factors:-
-     Pattern and Availability
+   • The word after the keyword or before the keyword(two separate functions exist for this purpose) is used as the field found depending upon the two factors:-
+  Pattern and Availability
 
 3. Using Levenshtein Distance to adjust for numerous spelling errors in addresses .
    e.g New Deli instead of New Delhi in court record
