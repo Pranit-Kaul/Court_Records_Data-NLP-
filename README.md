@@ -8,44 +8,60 @@ However, this data is messy and in unstructured format (i.e. in the form of HTML
 OBJECTIVE
 
 ->To extract CNR (Case Name Record) number information.
+
 ->To extract address and name information.
+
 ->To use the address information to identify subfields of the address
 
 ->CNR Number
-    Abstraction
-    Separation
-->Relations using NLTK 
+
+  Abstraction
+  
+  Separation
+  
+->Relations using NLTK
+
   (e.g To classify father-son/grandfather-grandson relationship from only human readable complex phrases) 
+  
 ->Petitioner and Respondent 
-    Information abstraction(Name, Address and Advocate name)
-    Address separation
-      Sub-District, District and City/Village name
-    Mobile number and Pin code
+   Information abstraction(Name, Address and Advocate name)
+   
+   Address separation
+     Sub-District, District and City/Village name
+     
+   Mobile number and Pin code  
 ->Word Frequency
+
 ->Accessing the data set of village names
 
  
 Explanation & Approach
 
 1.CNR Number
+
  a.Abstraction
+ 
  b.Separation
+ 
 FILE: final_cnr1.py
+
 Abstraction:-
 •All <span>  tags are found in HTML code using BeautifulSoup library and the one with “CNR Number” text is picked.
+	
  The CNR number is extracted from it.
+ 
 Separation:-
 •The CNR number is separated according to this pattern:
+	
+![alt text](https://github.com/Pranit-Kaul/Court_Records_Data-NLP-/blob/master/images/CNR.jpg)
   
 
 2.Petitioner and Respondent 
 FILE: final_pet1.py
   a.Information abstraction(Name, Address and Advocate name)
   • All <span> tags are found containing the class of the corresponding information table. 
-   Eg. The tag containing petitioner information has the class: “Petitioner_Advocate_table”. 
-   A general function is used which takes the argument as the table name.
-  • The content of the tags is analyzed and then the information is assigned to Name, Address 
-   and Advocate fields assuming a pattern observed in majority of the files.
+   Eg. The tag containing petitioner information has the class: “Petitioner_Advocate_table”.
+  • The content of the tags is analyzed and then the information is assigned to Name, Address and Advocate fields assuming a pattern observed in majority of the files.
 
 b. Address separation
    Sub-District, District and City/Village name
@@ -79,6 +95,8 @@ Pin code(6 digit) is observed to be in different formats and are handled by mult
 Part of speech(POS) tagging functionality of NLTK is used to identify grammar patterns like: “son of”, “daughter of” etc.
 A tagged words trees is made and the required content is accessed. A sample tree structure:
 
+![alt text](https://github.com/Pranit-Kaul/Court_Records_Data-NLP-/blob/master/images/nltk.jpg)
+
  
 5. Word Frequency
 FILE: final_wordfreq1.py 
@@ -92,25 +110,10 @@ APPROACH & EXPLANATION:-
 Input File
 
 Input HTML sample  file:
-
+![alt text](https://github.com/Pranit-Kaul/Court_Records_Data-NLP-/blob/master/images/input.jpg)
 
 Output schemas
-
-• CNR Number:
-File Name  State  District Sub-District  CNR Number  Year
-					
-
-• Petitioner and Respondent Address:
-File Name   Name  Address  Advocate
-			
-
-• Address separation:
-File Name   Address  Village District  Sub-District  Nagar  House Road
-							
-
-• Mobile Number and Pincode: gets printed.
-
-• Relation: Father’s Name and Grandfather’s Name also gets printed 
+![alt text](https://github.com/Pranit-Kaul/Court_Records_Data-NLP-/blob/master/images/schema.JPG)
 
 
 RESOURCES
